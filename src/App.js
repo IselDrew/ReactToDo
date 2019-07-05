@@ -5,7 +5,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            taskList: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -13,11 +13,11 @@ class App extends Component {
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        console.log('input event');
     }
 
     handleClick(event) {
-        console.log(this.state.value);
+        console.log('click event');
         event.preventDefault();
     }
 
@@ -25,10 +25,13 @@ class App extends Component {
         return (
             <div>
                 <h1>ToDo App</h1>
-                <form>
-                    <input type='text' placeholder='Write tasks' value={this.state.value} onChange={this.handleChange} />
-                    <button onClick={this.handleClick}>Submit</button>
-                    <h1>{this.state.value}</h1>
+                <form onSubmit={this.handleClick}>
+                    <input 
+                        type='text' 
+                        placeholder='Write tasks' 
+                        onChange={this.handleChange} 
+                    />
+                    <button>Submit</button>
                 </form>
             </div>
         );
