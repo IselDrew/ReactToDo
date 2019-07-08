@@ -13,11 +13,24 @@ class TodoForm extends Component {
         this.addTask = this.addTask.bind(this);
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', (event) => {
+            const key = event.keyCode
+            if (key !== 13) {
+                return
+            } else {
+                // console.log(event)
+                this.addTask(event)
+            }
+        })
+    }
+
     handleChange(event) {
         this.setState( { task: event.target.value })
     }
 
     addTask(event) {
+        // console.log(event)
         event.preventDefault();
         if(!this.state.task) {
             return
@@ -37,15 +50,12 @@ class TodoForm extends Component {
         return (
             <div>
                 <h1>ToDo App</h1>
-                <form onSubmit={this.addTask} >
                     <input 
                         type='text' 
                         value={this.state.task}
                         onChange={this.handleChange} 
                         placeholder='Write tasks' 
                     />
-                    <button>Submit</button>
-                </form>
                 <div>
                     {renderText}
                 </div>
