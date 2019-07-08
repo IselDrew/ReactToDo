@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import TodoList from './TodoList'
 
 class TodoForm extends Component {
     constructor() {
@@ -9,33 +10,34 @@ class TodoForm extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick= this.handleClick.bind(this);
+        this.addTask = this.addTask.bind(this);
     }
 
     handleChange(event) {
         this.setState( { task: event.target.value })
     }
 
-    handleClick(event) {
-        this.setState(prevState => {
-            return {
-                taskList: [...prevState.taskList, this.state.task]
-            }
-        })
-
-        console.log(this.state.taskList)
-
+    addTask(event) {
         event.preventDefault();
+        if(!this.state.task) {
+            return
+        } else {
+            this.setState(prevState => {
+                return {
+                    task: '',
+                    taskList: [...prevState.taskList, this.state.task]
+                }
+            })
+            console.log(this.state.taskList)
+        }
     }
 
     render () {
+        const renderText = this.state.taskList.map(item => <TodoList item={item}/>)
         return (
             <div>
                 <h1>ToDo App</h1>
-                <form 
-                    onSubmit={this.handleClick}
-                    disabled={this.state.task}
-                >
+                <form onSubmit={this.addTask} >
                     <input 
                         type='text' 
                         value={this.state.task}
@@ -44,6 +46,9 @@ class TodoForm extends Component {
                     />
                     <button>Submit</button>
                 </form>
+                <div>
+                    {renderText}
+                </div>
             </div>
         );
     }
