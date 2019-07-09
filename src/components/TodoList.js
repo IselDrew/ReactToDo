@@ -3,7 +3,8 @@ import React from 'react'
 function TodoList(props) {
     return (
         <div>
-            <p>{props.item}</p>
+            <li>{props.item}</li>
+            {/* <button onClick={props.removeTask.bind(props, item)}>delete</button> */}
         </div>
     )
 }
