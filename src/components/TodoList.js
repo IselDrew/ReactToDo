@@ -2,10 +2,14 @@ import React from 'react'
 
 function TodoList(props) {
     return (
-        <div>
+        <div className='todo-item'>
             <li>{props.item}</li>
-            {/* <button onClick={props.removeTask.bind(props, item)}>delete</button> */}
-        </div>
+            <div onClick={props.removeTask.bind(props, props.item)}>
+                <svg width='15' height='15'>
+                    <rect width='15' height='15' fill='red'/>
+                </svg>
+            </div>
+        </div> 
     )
 }
 

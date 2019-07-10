@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-// import TodoList from './TodoList'
+import TodoList from './TodoList'
 
-class TodoForm extends Component {
+class TodoContent extends Component {
     constructor() {
         super();
         this.state = {
@@ -24,7 +24,7 @@ class TodoForm extends Component {
                 // console.log(event)
                 this.addTask(event);
             }
-        })
+        });
     }
 
     handleChange(event) {
@@ -32,10 +32,10 @@ class TodoForm extends Component {
     }
 
     removeTask(taskToRemove) {
-        console.log('removed, ', taskToRemove)
+        console.log(taskToRemove, 'removed');
         this.setState({
             taskList: this.state.taskList.filter(item => item !== taskToRemove)
-        })
+        });
     }
 
     addTask(event) {
@@ -49,39 +49,28 @@ class TodoForm extends Component {
                     task: '',
                     taskList: [...prevState.taskList, this.state.task]
                 };
-            })
+            });
             console.log(this.state.taskList);
         }
     }
 
     render () {
-        // const renderText = this.state.taskList.map(item => <TodoList item={item}/>);
-    const renderText = this.state.taskList.map(item =>  
-    <div className='todo-item'>
-        <li>{item}</li>
-        <div onClick={this.removeTask.bind(this, item)}>
-            <svg width='15' height='15'>
-                <rect width='15' height='15' fill='red'/>
-            </svg>
-        </div>
-    </div> )
+        const showListElem = this.state.taskList.map(item => <TodoList item={item} removeTask={this.removeTask}/>);
         return (
             <div>
                 <h1>ToDo App</h1>
-                    <input 
-                        type='text' 
-                        value={this.state.task}
-                        onChange={this.handleChange} 
-                        placeholder='Write tasks' 
-                        ref={this.textInput}
-                    />
-                    <hr/>
-                <div>
-                    {renderText}
-                </div>
+                <input 
+                    type='text' 
+                    value={this.state.task}
+                    onChange={this.handleChange} 
+                    placeholder='Write tasks' 
+                    ref={this.textInput}
+                />
+                <hr/>
+                {showListElem}
             </div>
         );
     }
 }
 
-export default TodoForm 
+export default TodoContent 

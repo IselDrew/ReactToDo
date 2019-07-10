@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import TodoForm from './components/TodoForm'
+import TodoContent from './components/TodoContent'
 
 class App extends Component {
     render () {
         return (
-            <TodoForm />
+            <TodoContent />
         );
     }
 }
