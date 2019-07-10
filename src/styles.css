@@ -1,0 +1,13 @@
+.todo-item {
+    display: flex;
+    justify-content: flex-start;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    color: #333333;
+}
+
+svg {
+    margin-left: 5px;
+    border: 1px solid #dddddd;
+}

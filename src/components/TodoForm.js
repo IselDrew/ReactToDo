@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TodoList from './TodoList'
+// import TodoList from './TodoList'
 
 class TodoForm extends Component {
     constructor() {
@@ -57,9 +57,13 @@ class TodoForm extends Component {
     render () {
         // const renderText = this.state.taskList.map(item => <TodoList item={item}/>);
     const renderText = this.state.taskList.map(item =>  
-    <div>
+    <div className='todo-item'>
         <li>{item}</li>
-        <button onClick={this.removeTask.bind(this, item)}>delete</button>
+        <div onClick={this.removeTask.bind(this, item)}>
+            <svg width='15' height='15'>
+                <rect width='15' height='15' fill='red'/>
+            </svg>
+        </div>
     </div> )
         return (
             <div>
@@ -71,6 +75,7 @@ class TodoForm extends Component {
                         placeholder='Write tasks' 
                         ref={this.textInput}
                     />
+                    <hr/>
                 <div>
                     {renderText}
                 </div>
