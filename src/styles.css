@@ -7,7 +7,12 @@
     color: #333333;
 }
 
+.remove-button {
+  cursor: pointer;
+}
+
 svg {
     margin-left: 5px;
-    border: 1px solid #dddddd;
+    margin-top: 2px;
+    /* border: 1px solid #dddddd; */
 }
