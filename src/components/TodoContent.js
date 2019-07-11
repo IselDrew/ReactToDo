@@ -57,7 +57,7 @@ class TodoContent extends Component {
     render () {
         const showListElem = this.state.taskList.map(item => <TodoList item={item} removeTask={this.removeTask}/>);
         return (
-            <div>
+            <div className='todo-list'>
                 <h1>ToDo App</h1>
                 <input 
                     type='text' 
