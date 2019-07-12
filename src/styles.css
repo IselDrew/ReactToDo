@@ -1,9 +1,10 @@
 .todo-item {
     display: flex;
+    margin-top: 10px;
     font-family: Roboto, sans-serif;
     font-size: 15px;
     color: #333333;
-}
+} 
 
 body {
     background-color: whitesmoke;
@@ -25,7 +26,7 @@ body {
             /* The third layer shadow */
         0 20px 1px -9px rgba(0,0,0,0.15);
     padding: 30px;
-}
+} 
 
 .remove-button {
   cursor: pointer;

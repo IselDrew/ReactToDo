@@ -3,7 +3,10 @@ import React from 'react'
 function TodoList(props) {
     return (
         <div className='todo-item'>
-            <li>{props.item}</li>
+            <input 
+                type='checkbox'
+            />
+            <a>{props.item}</a>
             <div className='remove-button' onClick={props.removeTask.bind(props, props.item)}>
                 <svg viewBox='0 0 375 375' width='15' height='15' xmlns='http://www.w3.org/2000/svg'>
                     <g>
