@@ -1,5 +1,6 @@
 .todo-item {
     display: flex;
+    align-items: center;
     margin-top: 10px;
     font-family: Roboto, sans-serif;
     font-size: 15px;
@@ -33,6 +34,7 @@ body {
 }
 
 svg {
+    align-items: center; 
     margin-left: 5px;
     margin-top: 2px;
     /* border: 1px solid #dddddd; */

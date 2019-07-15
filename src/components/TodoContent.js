@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import TodoList from './TodoList'
+import TodoList from './Todo'
+import InputForm from './InputForm'
 
 class TodoContent extends Component {
     constructor() {
@@ -20,15 +21,13 @@ class TodoContent extends Component {
             const key = event.keyCode;
             if (key !== 13) {
                 return;
-            } else {
-                // console.log(event)
-                this.addTask(event);
             }
+            this.addTask(event);
         });
     }
 
     handleChange(event) {
-        this.setState( { task: event.target.value });
+        this.setState({task: event.target.value});
     }
 
     removeTask(taskToRemove) {
@@ -39,7 +38,6 @@ class TodoContent extends Component {
     }
 
     addTask(event) {
-        // console.log(event)
         event.preventDefault();
         if(!this.state.task) {
             return;
@@ -55,19 +53,15 @@ class TodoContent extends Component {
     }
 
     render () {
-        const showListElem = this.state.taskList.map(item => <TodoList item={item} removeTask={this.removeTask}/>);
+        const listItems = this.state.taskList.map(item => <TodoList item={item} removeTask={this.removeTask}/>);
         return (
             <div className='todo-list'>
-                <h1>ToDo App</h1>
-                <input 
-                    type='text' 
-                    value={this.state.task}
-                    onChange={this.handleChange} 
-                    placeholder='Write tasks' 
-                    ref={this.textInput}
+                <InputForm 
+                    {...this.state}
+                    handleChange={this.handleChange}
+                    textInput={this.textInput}
                 />
-                <hr/>
-                {showListElem}
+                {listItems}
             </div>
         );
     }
