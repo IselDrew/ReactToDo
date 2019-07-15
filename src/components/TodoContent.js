@@ -5,12 +5,15 @@ import InputForm from './InputForm'
 class TodoContent extends Component {
     constructor() {
         super();
+
+        this.keyCount = 0;
         this.state = {
             task: '',
             taskList: []
         };
         this.textInput = React.createRef();
 
+        this.getKey = this.getKey.bind(this)
         this.handleChange = this.handleChange.bind(this);
         this.addTask = this.addTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
@@ -26,35 +29,44 @@ class TodoContent extends Component {
         });
     }
 
+    getKey() {
+        return this.keyCount++;
+    }
+
     handleChange(event) {
         this.setState({task: event.target.value});
     }
 
     removeTask(taskToRemove) {
-        console.log(taskToRemove, 'removed');
         this.setState({
             taskList: this.state.taskList.filter(item => item !== taskToRemove)
         });
+        console.log(taskToRemove, 'removed');
     }
 
     addTask(event) {
         event.preventDefault();
+        const newTask = {
+            'id': this.getKey(),
+            'text': this.state.task,
+            'completed': false
+        }
         if(!this.state.task) {
             return;
-        } else {
-            this.setState(prevState => {
-                return {
-                    task: '',
-                    taskList: [...prevState.taskList, this.state.task]
-                };
-            });
-            console.log(this.state.taskList);
-        }
+        } 
+        this.setState(prevState => {
+            return {
+                task: '',
+                taskList: [...prevState.taskList, newTask]
+            }
+        })
+        console.log(this.state.taskList)
     }
 
     render () {
         const listItems = this.state.taskList.map(item => (
             <Todo 
+                key={item.id}
                 item={item} 
                 removeTask={this.removeTask} 
             />

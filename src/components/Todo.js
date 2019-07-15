@@ -6,8 +6,9 @@ function TodoList(props) {
         <div className='todo-item'>
             <input 
                 type='checkbox'
+                checked={props.item.completed}
             />
-            <a>{props.item}</a>
+            <a>{props.item.text}</a>
             <div 
                 className='remove-button' 
                 onClick={props.removeTask.bind(props, props.item)}
