@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TodoList from './Todo'
+import Todo from './Todo'
 import InputForm from './InputForm'
 
 class TodoContent extends Component {
@@ -53,7 +53,12 @@ class TodoContent extends Component {
     }
 
     render () {
-        const listItems = this.state.taskList.map(item => <TodoList item={item} removeTask={this.removeTask}/>);
+        const listItems = this.state.taskList.map(item => (
+            <Todo 
+                item={item} 
+                removeTask={this.removeTask} 
+            />
+        ));
         return (
             <div className='todo-list'>
                 <InputForm 

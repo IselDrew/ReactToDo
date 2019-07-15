@@ -8,7 +8,10 @@ function TodoList(props) {
                 type='checkbox'
             />
             <a>{props.item}</a>
-            <div className='remove-button' onClick={props.removeTask.bind(props, props.item)}>
+            <div 
+                className='remove-button' 
+                onClick={props.removeTask.bind(props, props.item)}
+            >
                 <RemoveIcon />
             </div>
         </div> 

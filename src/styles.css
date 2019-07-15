@@ -34,8 +34,13 @@ body {
 }
 
 svg {
+    fill: red;
     align-items: center; 
     margin-left: 5px;
     margin-top: 2px;
     /* border: 1px solid #dddddd; */
+}
+
+svg:hover {
+    fill: blue;
 }
