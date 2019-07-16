@@ -16,6 +16,7 @@ class TodoContent extends Component {
         this.getKey = this.getKey.bind(this)
         this.handleChange = this.handleChange.bind(this);
         this.addTask = this.addTask.bind(this);
+        this.editTask = this.editTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.strikeThrough = this.strikeThrough.bind(this)
     }
@@ -31,9 +32,9 @@ class TodoContent extends Component {
     }
 
     strikeThrough(id) {
-        console.log('clicked')
+        // console.log('clicked')
         this.setState(argum => {
-            console.log(argum)
+            // console.log(argum)
             const updatedCheckbox = argum.taskList.map(todo => {
                 if (todo.id === id) {
                     todo.completed = !todo.completed;
@@ -56,7 +57,11 @@ class TodoContent extends Component {
         this.setState({
             taskList: this.state.taskList.filter(item => item !== task)
         });
-        console.log(task, 'removed');
+        // console.log(task, 'removed');
+    }
+
+    editTask(task) {
+        console.log('Edit task')
     }
 
     addTask(event) {
@@ -75,7 +80,7 @@ class TodoContent extends Component {
                 taskList: [...prevState.taskList, newTask]
             }
         })
-        console.log(this.state.taskList)
+        // console.log(this.state.taskList)
     }
 
     render () {
@@ -84,6 +89,7 @@ class TodoContent extends Component {
                 key={item.id}
                 item={item} 
                 removeTask={this.removeTask} 
+                editTask={this.editTask}
                 strikeThrough={this.strikeThrough}
             />
         ));

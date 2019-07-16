@@ -1,5 +1,6 @@
 import React from 'react'
 import RemoveIcon from './RemoveIcon'
+import EditIcon from './EditIcon'
 
 function TodoList(props) {
     const lineThrough = {
@@ -14,7 +15,15 @@ function TodoList(props) {
                 onChange={props.strikeThrough.bind(props, props.item.id)}
                 checked={props.item.completed}
             />
+
             <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
+
+            <div
+                onClick={props.editTask.bind(props, props.item)}
+            >
+                <EditIcon />
+            </div>
+
             <div 
                 className='remove-button' 
                 onClick={props.removeTask.bind(props, props.item)}

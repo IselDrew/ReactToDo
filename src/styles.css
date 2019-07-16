@@ -1,3 +1,7 @@
+body {
+    background-color: whitesmoke;
+}
+
 .todo-item {
     display: flex;
     align-items: center;
@@ -6,10 +10,6 @@
     font-size: 15px;
     color: #333333;
 } 
-
-body {
-    background-color: whitesmoke;
-}
 
 .todo-list{
     background-color: white;
@@ -34,7 +34,7 @@ body {
 }
 
 svg {
-    fill: red;
+    /* fill: red; */
     align-items: center; 
     margin-left: 5px;
     margin-top: 2px;
@@ -42,5 +42,5 @@ svg {
 }
 
 svg:hover {
-    fill: blue;
+    fill: red;
 }
