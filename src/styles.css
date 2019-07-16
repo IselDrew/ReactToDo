@@ -29,12 +29,9 @@ body {
     padding: 30px;
 } 
 
-.remove-button {
-  cursor: pointer;
-}
-
 svg {
     /* fill: red; */
+    cursor: pointer;
     align-items: center; 
     margin-left: 5px;
     margin-top: 2px;

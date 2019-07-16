@@ -13,21 +13,24 @@ function TodoList(props) {
         <div className='todo-item'>
             <input 
                 type='checkbox'
-                onChange={props.strikeThrough.bind(props, props.item.id)}
+                onChange={() => {props.strikeThrough(props.item.id)}}
                 checked={props.item.completed}
             />
 
-            <div contentEditable={props.item.isEdit}>
+            <div 
+                contentEditable={props.item.isEdit} 
+                onInput={(event) => {props.saveChanges(props.item.id, event)}}
+            >
                 <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
             </div>
 
-            <div onClick={props.editTask.bind(props, props.item.id)}>
+            <div onClick={() => {props.editTask(props.item.id)}}>
                 {props.item.isEdit ? <SaveIcon /> : <EditIcon />}
             </div>
 
             <div 
                 className='remove-button' 
-                onClick={props.removeTask.bind(props, props.item)}
+                onClick={() => props.removeTask(props.item)}
             >
                 <RemoveIcon />
             </div>

@@ -7,7 +7,7 @@ function InputForm(props) {
             <input 
                 type='text' 
                 value={props.task}
-                onChange={props.handleChange} 
+                onChange={props.writeTask} 
                 placeholder='Write tasks' 
                 ref={props.textInput}
             />

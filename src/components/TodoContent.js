@@ -14,9 +14,10 @@ class TodoContent extends Component {
         this.textInput = React.createRef();
 
         this.getKey = this.getKey.bind(this)
-        this.handleChange = this.handleChange.bind(this);
+        this.writeTask = this.writeTask.bind(this);
         this.addTask = this.addTask.bind(this);
         this.editTask = this.editTask.bind(this);
+        this.saveChanges = this.saveChanges.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.strikeThrough = this.strikeThrough.bind(this)
     }
@@ -31,25 +32,11 @@ class TodoContent extends Component {
         });
     }
 
-    strikeThrough(id) {
-        // console.log('clicked')
-        this.setState(argum => {
-            // console.log(argum)
-            const updatedCheckbox = argum.taskList.map(todo => {
-                if (todo.id === id) {
-                    todo.completed = !todo.completed;
-                }
-                return todo;
-            })
-            return updatedCheckbox;
-        })
-    }
-
     getKey() {
         return this.keyCount++;
     }
 
-    handleChange(event) {
+    writeTask(event) {
         this.setState({task: event.target.value});
     }
 
@@ -60,15 +47,37 @@ class TodoContent extends Component {
         // console.log(task, 'removed');
     }
 
-    editTask(id) {
-        // console.log(isEdit);
+    strikeThrough(id) {
         this.setState(argum => {
-            // console.log(argum)
+            const updatedCheckbox = argum.taskList.map(todo => {
+                if (todo.id === id) {
+                    todo.completed = !todo.completed;
+                }
+                return todo;
+            })
+            return updatedCheckbox;
+        })
+    }
+
+    editTask(id) {
+        this.setState(argum => {
             const updatedEdit = argum.taskList.map(todo => {
                 if (todo.id === id) {
                     todo.isEdit = !todo.isEdit;
                 }
-                console.log(todo)
+                return todo;
+            })
+            return updatedEdit;
+        })
+    }
+
+    saveChanges(id, event) {
+        let newText = event.target.textContent;
+        this.setState(argum => {
+            const updatedEdit = argum.taskList.map(todo => {
+                if (todo.id === id) {
+                    todo.text = newText;
+                }
                 return todo;
             })
             return updatedEdit;
@@ -103,13 +112,14 @@ class TodoContent extends Component {
                 removeTask={this.removeTask} 
                 editTask={this.editTask}
                 strikeThrough={this.strikeThrough}
+                saveChanges={this.saveChanges}
             />
         ));
         return (
             <div className='todo-list'>
                 <InputForm 
                     {...this.state}
-                    handleChange={this.handleChange}
+                    writeTask={this.writeTask}
                     textInput={this.textInput}
                 />
                 {listItems}
