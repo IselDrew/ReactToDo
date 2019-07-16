@@ -1,6 +1,7 @@
 import React from 'react'
 import RemoveIcon from './RemoveIcon'
 import EditIcon from './EditIcon'
+import SaveIcon from './SaveIcon'
 
 function TodoList(props) {
     const lineThrough = {
@@ -16,12 +17,12 @@ function TodoList(props) {
                 checked={props.item.completed}
             />
 
-            <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
+            <div contentEditable={props.item.isEdit}>
+                <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
+            </div>
 
-            <div
-                onClick={props.editTask.bind(props, props.item)}
-            >
-                <EditIcon />
+            <div onClick={props.editTask.bind(props, props.item.id)}>
+                {props.item.isEdit ? <SaveIcon /> : <EditIcon />}
             </div>
 
             <div 

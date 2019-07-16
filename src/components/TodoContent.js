@@ -60,8 +60,19 @@ class TodoContent extends Component {
         // console.log(task, 'removed');
     }
 
-    editTask(task) {
-        console.log('Edit task')
+    editTask(id) {
+        // console.log(isEdit);
+        this.setState(argum => {
+            // console.log(argum)
+            const updatedEdit = argum.taskList.map(todo => {
+                if (todo.id === id) {
+                    todo.isEdit = !todo.isEdit;
+                }
+                console.log(todo)
+                return todo;
+            })
+            return updatedEdit;
+        })
     }
 
     addTask(event) {
@@ -69,7 +80,8 @@ class TodoContent extends Component {
         const newTask = {
             'id': this.getKey(),
             'text': this.state.task,
-            'completed': false
+            'completed': false,
+            'isEdit': false
         }
         if(!this.state.task) {
             return;
@@ -80,7 +92,7 @@ class TodoContent extends Component {
                 taskList: [...prevState.taskList, newTask]
             }
         })
-        // console.log(this.state.taskList)
+        console.log(this.state.taskList)
     }
 
     render () {
