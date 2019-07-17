@@ -6,11 +6,11 @@ class TodoContent extends Component {
     constructor() {
         super();
 
-        this.keyCount = 0;
         this.state = {
             task: '',
             taskList: []
         };
+        this.keyCount = 0;
         this.textInput = React.createRef();
 
         this.getKey = this.getKey.bind(this)
@@ -44,7 +44,6 @@ class TodoContent extends Component {
         this.setState({
             taskList: this.state.taskList.filter(item => item !== task)
         });
-        // console.log(task, 'removed');
     }
 
     strikeThrough(id) {
@@ -72,13 +71,12 @@ class TodoContent extends Component {
     }
 
     saveChanges(id, event) {
-        let newText = event.target.textContent;
+        const newText = event.target.textContent;
         this.setState(argum => {
             const updatedEdit = argum.taskList.map(todo => {
                 if (todo.id === id) {
                     todo.text = newText;
                 }
-                console.log(todo);
                 return todo;
             })
             return updatedEdit;
@@ -100,9 +98,9 @@ class TodoContent extends Component {
             return {
                 task: '',
                 taskList: [...prevState.taskList, newTask]
-            }
-        })
-        console.log(this.state.taskList)
+            };
+        });
+        console.log(this.state.taskList);
     }
 
     render () {
@@ -116,6 +114,7 @@ class TodoContent extends Component {
                 saveChanges={this.saveChanges}
             />
         ));
+
         return (
             <div className='todo-list'>
                 <InputForm 

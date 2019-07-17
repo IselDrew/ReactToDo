@@ -9,6 +9,7 @@ function TodoList(props) {
         color: '#cdcdcd',
         textDecoration: 'line-through'
     }
+
     return (
         <div className='todo-item'>
             <input 
@@ -24,14 +25,11 @@ function TodoList(props) {
                 <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
             </div>
 
-            <div onClick={ (event) => {props.editTask(props.item.id)}}>
+            <div onClick={() => {props.editTask(props.item.id)}}>
                 {props.item.isEdit ? <SaveIcon /> : <EditIcon />}
             </div>
 
-            <div 
-                className='remove-button' 
-                onClick={() => props.removeTask(props.item)}
-            >
+            <div onClick={() => props.removeTask(props.item)}>
                 <RemoveIcon />
             </div>
         </div> 
