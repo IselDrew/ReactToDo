@@ -19,12 +19,12 @@ function TodoList(props) {
 
             <div 
                 contentEditable={props.item.isEdit} 
-                onInput={(event) => {props.saveChanges(props.item.id, event)}}
+                onBlur={(event) => {props.saveChanges(props.item.id, event)}}
             >
                 <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
             </div>
 
-            <div onClick={() => {props.editTask(props.item.id)}}>
+            <div onClick={ (event) => {props.editTask(props.item.id)}}>
                 {props.item.isEdit ? <SaveIcon /> : <EditIcon />}
             </div>
 

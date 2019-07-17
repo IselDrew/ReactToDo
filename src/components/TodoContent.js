@@ -78,6 +78,7 @@ class TodoContent extends Component {
                 if (todo.id === id) {
                     todo.text = newText;
                 }
+                console.log(todo);
                 return todo;
             })
             return updatedEdit;
