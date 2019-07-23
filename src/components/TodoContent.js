@@ -71,6 +71,7 @@ class TodoContent extends Component {
             return argum.taskList.map(todo => {
                 if (todo.id === id) {
                     todo.isEdit = true;
+                    this.editedText = todo.text;
                 }
                 return todo;
             })
