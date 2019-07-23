@@ -37,6 +37,9 @@ class TodoContent extends Component {
     }
 
     writeTask(event) {
+        if(event.target.value === ' ') {
+            return;
+        }
         this.setState({task: event.target.value});
     }
 

@@ -11,7 +11,7 @@ body {
     color: #333333;
 } 
 
-.todo-list{
+.todo-list {
     background-color: white;
     margin: auto;
     width: 50%;
@@ -28,6 +28,12 @@ body {
         0 20px 1px -9px rgba(0,0,0,0.15);
     padding: 30px;
 } 
+
+.line-through {
+    /* font-style: italic; */
+    color: #cdcdcd;
+    text-decoration: line-through;
+}
 
 svg {
     /* fill: red; */

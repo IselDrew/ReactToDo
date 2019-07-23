@@ -4,12 +4,6 @@ import EditIcon from './EditIcon'
 import SaveIcon from './SaveIcon'
 
 function TodoList(props) {
-    const lineThrough = {
-        fontStyle: 'italic',
-        color: '#cdcdcd',
-        textDecoration: 'line-through'
-    }
-
     return (
         <div className='todo-item'>
             <input 
@@ -22,7 +16,7 @@ function TodoList(props) {
                 contentEditable={props.item.isEdit} 
                 onBlur={(event) => {props.saveChanges(props.item.id, event)}}
             >
-                <a style={props.item.completed ? lineThrough : null}>{props.item.text}</a>
+                <p className={props.item.completed ? 'line-through' : ''}>{props.item.text}</p>
             </div>
 
             <div onClick={() => {props.editTask(props.item.id)}}>
