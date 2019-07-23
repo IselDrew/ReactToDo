@@ -1,16 +1,9 @@
 import React, {Component} from 'react'
-import RemoveIcon from './RemoveIcon'
-import EditIcon from './EditIcon'
-import SaveIcon from './SaveIcon'
+import RemoveIcon from '../icons/RemoveIcon'
+import EditIcon from '../icons/EditIcon'
+import SaveIcon from '../icons/SaveIcon'
 
 class Todo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        }
-    }
-
     render() {
         return (
             <div className='todo-item'>
@@ -24,16 +17,22 @@ class Todo extends Component {
                     (<input 
                         type='text' 
                         defaultValue={this.props.item.text}
-                        onChange={(event) => {this.props.saveChanges(this.props.item.id, event)}}
+                        onChange={(event) => {this.props.updateTask(event)}}
+                        autoFocus
                     />) :
                     (<div> 
                         <p className={this.props.item.completed ? 'line-through' : ''}> 
                             {this.props.item.text} 
                         </p> 
-                    </div> )
+                    </div>)
                 }
 
-                <div onClick={() => {this.props.editTask(this.props.item.id)}}>
+                <div onClick={
+                    this.props.item.isEdit ? 
+                        (() => {this.props.saveTask(this.props.item.id)}):
+                        (() => {this.props.editTask(this.props.item.id)})
+                    }
+                >
                     {this.props.item.isEdit ? <SaveIcon /> : <EditIcon />}
                 </div>
 
