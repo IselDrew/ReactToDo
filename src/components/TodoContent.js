@@ -20,6 +20,7 @@ class TodoContent extends Component {
         this.saveChanges = this.saveChanges.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.strikeThrough = this.strikeThrough.bind(this)
+
     }
 
     componentDidMount() {
@@ -73,8 +74,13 @@ class TodoContent extends Component {
         })
     }
 
+    // updateValue(id, event) {
+    //     console.log('youre editing task with', id, 'id')
+    //     console.log(event.target.value)
+    // }
+
     saveChanges(id, event) {
-        const newText = event.target.textContent;
+        const newText = event.target.value;
         this.setState(argum => {
             const updatedEdit = argum.taskList.map(todo => {
                 if (todo.id === id) {

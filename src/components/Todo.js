@@ -4,9 +4,12 @@ import EditIcon from './EditIcon'
 import SaveIcon from './SaveIcon'
 
 class Todo extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
 
     render() {
         return (
@@ -18,26 +21,17 @@ class Todo extends Component {
                 />
 
                 {this.props.item.isEdit ? 
-                    <input 
+                    (<input 
                         type='text' 
                         defaultValue={this.props.item.text}
-                        onBlur={(event) => {this.props.saveChanges(this.props.item.id, event)}}
-                    /> :
-                    <div> 
+                        onChange={(event) => {this.props.saveChanges(this.props.item.id, event)}}
+                    />) :
+                    (<div> 
                         <p className={this.props.item.completed ? 'line-through' : ''}> 
                             {this.props.item.text} 
                         </p> 
-                    </div> 
+                    </div> )
                 }
-
-                {/* <div 
-                    contentEditable={this.props.item.isEdit} 
-                    onBlur={(event) => {this.props.saveChanges(this.props.item.id, event)}}
-                >
-                    <p className={this.props.item.completed ? 'line-through' : ''}>
-                        {this.props.item.text}
-                    </p>
-                </div> */}
 
                 <div onClick={() => {this.props.editTask(this.props.item.id)}}>
                     {this.props.item.isEdit ? <SaveIcon /> : <EditIcon />}
