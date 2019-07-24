@@ -19,6 +19,7 @@ class Todo extends Component {
                         defaultValue={this.props.item.text}
                         onChange={(event) => {this.props.updateTask(event)}}
                         autoFocus
+                        placeholder={this.props.item.text}
                     />) :
                     (<div> 
                         <p className={this.props.item.completed ? 'line-through' : ''}> 

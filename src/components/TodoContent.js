@@ -13,6 +13,7 @@ class TodoContent extends Component {
         this.keyCount = 0;
         this.textInput = React.createRef();
         this.editedText = '';
+        this.prevId = 0;
 
         this.getKey = this.getKey.bind(this)
         this.writeTask = this.writeTask.bind(this);
@@ -66,12 +67,14 @@ class TodoContent extends Component {
     }
 
     editTask(id) {
-        // console.log('Editing task with id', id)
+        // console.log('Editing task with id', id);
         this.setState(argum => {
             return argum.taskList.map(todo => {
                 if (todo.id === id) {
                     todo.isEdit = true;
                     this.editedText = todo.text;
+                } else {
+                    todo.isEdit = false;
                 }
                 return todo;
             })
@@ -83,7 +86,7 @@ class TodoContent extends Component {
     }
 
     saveTask(id) {
-        // console.log('Text', this.editedText, 'saved by id', id)
+        // console.log('Text', this.editedText, 'saved by id', id);
         this.setState(argum => {
             return argum.taskList.map(todo => {
                 if (todo.id === id) {
@@ -103,13 +106,12 @@ class TodoContent extends Component {
 
     strikeThrough(id) {
         this.setState(argum => {
-            const updatedCheckbox = argum.taskList.map(todo => {
+            return argum.taskList.map(todo => {
                 if (todo.id === id) {
                     todo.completed = !todo.completed;
                 }
                 return todo;
             })
-            return updatedCheckbox;
         })
     }
 
