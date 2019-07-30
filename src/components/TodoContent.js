@@ -13,7 +13,6 @@ class TodoContent extends Component {
         this.keyCount = 0;
         this.textInput = React.createRef();
         this.editedText = '';
-        this.prevId = 0;
 
         this.getKey = this.getKey.bind(this)
         this.writeTask = this.writeTask.bind(this);

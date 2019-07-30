@@ -3,8 +3,8 @@ body {
 }
 
 p {
-   margin: 0px;
-   padding: 0px;
+   margin: 0;
+   padding: 0;
 }
 
 .todo-item {
@@ -35,7 +35,7 @@ p {
 } 
 
 .line-through {
-    /* font-style: italic; */
+    font-style: italic;
     color: #cdcdcd;
     text-decoration: line-through;
 }

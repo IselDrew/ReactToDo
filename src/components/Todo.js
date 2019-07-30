@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import RemoveIcon from '../icons/RemoveIcon'
 import EditIcon from '../icons/EditIcon'
 import SaveIcon from '../icons/SaveIcon'
@@ -14,28 +14,32 @@ class Todo extends Component {
                 />
 
                 {this.props.item.isEdit ? 
-                    (<input 
-                        type='text' 
+                    (
+                    <Fragment>
+                        <input
+                        type='text'
                         defaultValue={this.props.item.text}
                         onChange={(event) => {this.props.updateTask(event)}}
                         autoFocus
                         placeholder={this.props.item.text}
-                    />) :
-                    (<div> 
+                        />
+                        <div onClick={() => {this.props.saveTask(this.props.item.id)}}>
+                            <SaveIcon />
+                        </div>
+                    </Fragment>
+                    ) : (
+                    <Fragment>
+                    <div> 
                         <p className={this.props.item.completed ? 'line-through' : ''}> 
                             {this.props.item.text} 
                         </p> 
-                    </div>)
+                    </div>
+                    <div onClick={() => {this.props.editTask(this.props.item.id)}}>
+                            <EditIcon />
+                    </div>
+                    </Fragment>
+                    )
                 }
-
-                <div onClick={
-                    this.props.item.isEdit ? 
-                        (() => {this.props.saveTask(this.props.item.id)}):
-                        (() => {this.props.editTask(this.props.item.id)})
-                    }
-                >
-                    {this.props.item.isEdit ? <SaveIcon /> : <EditIcon />}
-                </div>
 
                 <div onClick={() => this.props.removeTask(this.props.item)}>
                     <RemoveIcon />
