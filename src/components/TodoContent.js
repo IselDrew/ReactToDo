@@ -17,11 +17,11 @@ class TodoContent extends Component {
         this.getKey = this.getKey.bind(this)
         this.writeTask = this.writeTask.bind(this);
         this.addTask = this.addTask.bind(this);
-        this.editTask = this.editTask.bind(this);
+        // this.editTask = this.editTask.bind(this);
         this.saveTask = this.saveTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.strikeThrough = this.strikeThrough.bind(this)
-        this.updateTask = this.updateTask.bind(this)
+        // this.updateTask = this.updateTask.bind(this)
     }
 
     componentDidMount() {
@@ -48,10 +48,10 @@ class TodoContent extends Component {
     addTask(event) {
         event.preventDefault();
         const newTask = {
-            'id': this.getKey(),
-            'text': this.state.task,
-            'completed': false,
-            'isEdit': false
+            id: this.getKey(),
+            text: this.state.task,
+            completed: false
+            // 'isEdit': false
         }
         if(!this.state.task) {
             return;
@@ -65,37 +65,55 @@ class TodoContent extends Component {
         console.log(this.state.taskList);
     }
 
-    editTask(id) {
-        // console.log('Editing task with id', id);
-        this.setState(argum => {
-            return argum.taskList.map(todo => {
-                if (todo.id === id) {
-                    todo.isEdit = true;
-                    this.editedText = todo.text;
+    saveTask(id, editedText) {
+        this.setState(state => {
+            return state.taskList.map(todo => {
+                if(todo.id === id) {
+                    //console.log(todo)
+                    return {
+                        ...todo, 
+                        text: editedText
+                    }
                 } else {
-                    todo.isEdit = false;
+                    return {
+                        ...todo
+                    }
                 }
-                return todo;
             })
         })
     }
 
-    updateTask(event) {
-        this.editedText = event.target.value;
-    }
+    // editTask(id) {
+    //     // console.log('Editing task with id', id);
+    //     this.setState(argum => {
+    //         return argum.taskList.map(todo => {
+    //             if (todo.id === id) {
+    //                 todo.isEdit = true;
+    //                 this.editedText = todo.text;
+    //             } else {
+    //                 todo.isEdit = false;
+    //             }
+    //             return todo;
+    //         })
+    //     })
+    // }
 
-    saveTask(id) {
-        // console.log('Text', this.editedText, 'saved by id', id);
-        this.setState(argum => {
-            return argum.taskList.map(todo => {
-                if (todo.id === id) {
-                    todo.text = this.editedText;
-                    todo.isEdit = false;
-                }
-                return todo;
-            })
-        })
-    }
+    // updateTask(event) {
+    //     this.editedText = event.target.value;
+    // }
+
+    // saveTask(id) {
+    //     // console.log('Text', this.editedText, 'saved by id', id);
+    //     this.setState(argum => {
+    //         return argum.taskList.map(todo => {
+    //             if (todo.id === id) {
+    //                 todo.text = this.editedText;
+    //                 todo.isEdit = false;
+    //             }
+    //             return todo;
+    //         })
+    //     })
+    // }
 
     removeTask(task) {
         this.setState({
@@ -120,9 +138,10 @@ class TodoContent extends Component {
                 key={item.id}
                 item={item} 
                 removeTask={this.removeTask} 
-                editTask={this.editTask}
+                // editTask={this.editTask}
                 strikeThrough={this.strikeThrough}
-                saveTask={this.saveTask} updateTask={this.updateTask}
+                saveTask={this.saveTask} 
+                // updateTask={this.updateTask}
             />
         ));
 
