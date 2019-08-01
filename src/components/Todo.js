@@ -10,7 +10,6 @@ class Todo extends Component {
             isEdit: false,
             editedText: ''
         }
-
         this.editTask = this.editTask.bind(this)
         this.getEditedTask = this.getEditedTask.bind(this)
     }
@@ -23,9 +22,6 @@ class Todo extends Component {
     }
 
     getEditedTask(event) {
-        if(!this.state.editedText) {
-            return;
-        }
         this.setState({ editedText: event.target.value })
     }
 

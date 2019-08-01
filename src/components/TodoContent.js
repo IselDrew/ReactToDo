@@ -12,16 +12,13 @@ class TodoContent extends Component {
         };
         this.keyCount = 0;
         this.textInput = React.createRef();
-        this.editedText = '';
 
         this.getKey = this.getKey.bind(this)
         this.writeTask = this.writeTask.bind(this);
         this.addTask = this.addTask.bind(this);
-        // this.editTask = this.editTask.bind(this);
         this.saveTask = this.saveTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.strikeThrough = this.strikeThrough.bind(this)
-        // this.updateTask = this.updateTask.bind(this)
     }
 
     componentDidMount() {
@@ -42,7 +39,7 @@ class TodoContent extends Component {
         if(event.target.value === ' ') {
             return;
         }
-        this.setState({task: event.target.value});
+        this.setState({ task: event.target.value });
     }
 
     addTask(event) {
@@ -51,7 +48,6 @@ class TodoContent extends Component {
             id: this.getKey(),
             text: this.state.task,
             completed: false
-            // 'isEdit': false
         }
         if(!this.state.task) {
             return;
@@ -73,7 +69,6 @@ class TodoContent extends Component {
             return {
                 taskList: state.taskList.map(todo => {
                     if(todo.id === id) {
-                        //console.log(todo)
                         return {
                             ...todo, 
                             text: editedText
@@ -95,13 +90,21 @@ class TodoContent extends Component {
     }
 
     strikeThrough(id) {
-        this.setState(argum => {
-            return argum.taskList.map(todo => {
-                if (todo.id === id) {
-                    todo.completed = !todo.completed;
-                }
-                return todo;
-            })
+        this.setState(state => {
+            return {
+                taskList: state.taskList.map(todo => {
+                    if (todo.id === id) {
+                        return {
+                            ...todo,
+                            completed: !todo.completed
+                        } 
+                    } else {
+                        return {
+                            ...todo
+                        }
+                    }
+                })
+            }
         })
     }
 
@@ -111,10 +114,8 @@ class TodoContent extends Component {
                 key={item.id}
                 item={item} 
                 removeTask={this.removeTask} 
-                // editTask={this.editTask}
                 strikeThrough={this.strikeThrough}
                 saveTask={this.saveTask} 
-                // updateTask={this.updateTask}
             />
         ));
 
