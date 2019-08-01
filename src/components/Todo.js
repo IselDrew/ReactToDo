@@ -18,14 +18,15 @@ class Todo extends Component {
     editTask() {
         this.setState({
             isEdit: true, 
-            editedText: this.props.item.text //is that ok? 
+            editedText: this.props.item.text
         })
-        // console.log(this.state)
     }
 
     getEditedTask(event) {
-        this.setState({editedText: event.target.value})
-        // console.log(this.state.editedText)
+        if(!this.state.editedText) {
+            return;
+        }
+        this.setState({ editedText: event.target.value })
     }
 
     render() {
@@ -41,13 +42,17 @@ class Todo extends Component {
                     (
                     <Fragment>
                         <input
-                        type='text'
-                        defaultValue={this.props.item.text}
-                        onChange={(event) => {this.getEditedTask(event)}}
-                        autoFocus
-                        placeholder={this.props.item.text}
+                            type='text'
+                            defaultValue={this.props.item.text}
+                            onChange={(event) => {this.getEditedTask(event)}}
+                            autoFocus
+                            placeholder={this.props.item.text}
                         />
-                        <div onClick={() => {this.props.saveTask(this.props.item.id, this.state.editedText)}}>
+                        <div onClick={
+                            () => {this.props.saveTask(this.props.item.id, this.state.editedText);
+                            this.setState({ isEdit: false });
+                            }}
+                        >
                             <SaveIcon />
                         </div>
                     </Fragment>
@@ -58,7 +63,6 @@ class Todo extends Component {
                             {this.props.item.text} 
                         </p> 
                     </div>
-                    {/* <div onClick={() => {this.props.editTask(this.props.item.id)}}> */}
                     <div onClick={this.editTask}>
                             <EditIcon />
                     </div>

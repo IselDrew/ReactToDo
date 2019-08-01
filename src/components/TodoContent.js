@@ -66,54 +66,27 @@ class TodoContent extends Component {
     }
 
     saveTask(id, editedText) {
+        if(!editedText) {
+            return;
+        } 
         this.setState(state => {
-            return state.taskList.map(todo => {
-                if(todo.id === id) {
-                    //console.log(todo)
-                    return {
-                        ...todo, 
-                        text: editedText
+            return {
+                taskList: state.taskList.map(todo => {
+                    if(todo.id === id) {
+                        //console.log(todo)
+                        return {
+                            ...todo, 
+                            text: editedText
+                        }
+                    } else {
+                        return {
+                            ...todo
+                        }
                     }
-                } else {
-                    return {
-                        ...todo
-                    }
-                }
-            })
+                })
+            }        
         })
     }
-
-    // editTask(id) {
-    //     // console.log('Editing task with id', id);
-    //     this.setState(argum => {
-    //         return argum.taskList.map(todo => {
-    //             if (todo.id === id) {
-    //                 todo.isEdit = true;
-    //                 this.editedText = todo.text;
-    //             } else {
-    //                 todo.isEdit = false;
-    //             }
-    //             return todo;
-    //         })
-    //     })
-    // }
-
-    // updateTask(event) {
-    //     this.editedText = event.target.value;
-    // }
-
-    // saveTask(id) {
-    //     // console.log('Text', this.editedText, 'saved by id', id);
-    //     this.setState(argum => {
-    //         return argum.taskList.map(todo => {
-    //             if (todo.id === id) {
-    //                 todo.text = this.editedText;
-    //                 todo.isEdit = false;
-    //             }
-    //             return todo;
-    //         })
-    //     })
-    // }
 
     removeTask(task) {
         this.setState({
