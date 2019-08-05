@@ -62,7 +62,7 @@ class TodoContent extends Component {
     }
 
     saveTask(id, editedText) {
-        if(!editedText) {
+        if(!editedText.trim()) { //editedtext.trim
             return;
         } 
         this.setState(state => {
@@ -122,7 +122,7 @@ class TodoContent extends Component {
         return (
             <div className='todo-list'>
                 <InputForm 
-                    {...this.state}
+                    {...this.state} //явно передавать параметры
                     writeTask={this.writeTask}
                     textInput={this.textInput}
                 />
