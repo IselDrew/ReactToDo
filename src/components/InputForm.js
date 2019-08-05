@@ -9,7 +9,7 @@ function InputForm(props) {
                 value={props.task}
                 onChange={props.writeTask} 
                 placeholder='Write tasks' 
-                ref={props.textInput}
+                ref={props.inputRef}
             />
             <hr/>
         </div>

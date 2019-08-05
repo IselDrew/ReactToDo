@@ -11,7 +11,7 @@ class TodoContent extends Component {
             taskList: []
         };
         this.keyCount = 0;
-        this.textInput = React.createRef();
+        this.inputRef = React.createRef();
 
         this.getKey = this.getKey.bind(this)
         this.writeTask = this.writeTask.bind(this);
@@ -22,7 +22,7 @@ class TodoContent extends Component {
     }
 
     componentDidMount() {
-        this.textInput.current.addEventListener('keydown', (event) => {
+        this.inputRef.current.addEventListener('keydown', (event) => {
             const key = event.keyCode;
             if (key !== 13) {
                 return;
@@ -58,11 +58,11 @@ class TodoContent extends Component {
                 taskList: [...prevState.taskList, newTask]
             };
         });
-        console.log(this.state.taskList);
+        // console.log(this.state.taskList);
     }
 
     saveTask(id, editedText) {
-        if(!editedText.trim()) { //editedtext.trim
+        if(!editedText.trim()) { 
             return;
         } 
         this.setState(state => {
@@ -74,9 +74,7 @@ class TodoContent extends Component {
                             text: editedText
                         }
                     } else {
-                        return {
-                            ...todo
-                        }
+                        return todo
                     }
                 })
             }        
@@ -99,9 +97,7 @@ class TodoContent extends Component {
                             completed: !todo.completed
                         } 
                     } else {
-                        return {
-                            ...todo
-                        }
+                        return todo
                     }
                 })
             }
@@ -122,9 +118,9 @@ class TodoContent extends Component {
         return (
             <div className='todo-list'>
                 <InputForm 
-                    {...this.state} //явно передавать параметры
+                    task={this.state.task}
                     writeTask={this.writeTask}
-                    textInput={this.textInput}
+                    inputRef={this.inputRef}
                 />
                 {listItems}
             </div>

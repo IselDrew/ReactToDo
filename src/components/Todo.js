@@ -10,8 +10,20 @@ class Todo extends Component {
             isEdit: false,
             editedText: ''
         }
+        this.editRef = React.createRef();
         this.editTask = this.editTask.bind(this)
         this.getEditedTask = this.getEditedTask.bind(this)
+    }
+
+    componentDidMount() {
+        this.editRef.current.addEventListener('keydown', (event) => {
+            const key = event.keyCode;
+            if (key !== 13) {
+                return;
+            }
+            this.props.saveTask(this.props.item.id, this.state.editedText);
+            this.setState({ isEdit: false });
+        });
     }
 
     editTask() {
@@ -27,7 +39,10 @@ class Todo extends Component {
 
     render() {
         return (
-            <div className='todo-item'>
+            <div 
+                className='todo-item'
+                ref={this.editRef}
+            >
                 <input 
                     type='checkbox'
                     onChange={() => {this.props.strikeThrough(this.props.item.id)}}
