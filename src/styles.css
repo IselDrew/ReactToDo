@@ -1,54 +1,49 @@
 body {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 p {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .todo-item {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    font-family: Roboto, sans-serif;
-    font-size: 15px;
-    color: #333333;
-} 
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  color: #333333;
+}
 
 .todo-list {
-    background-color: white;
-    margin: auto;
-    width: 50%;
-    box-shadow:
-    /* The top layer shadow */
-        0 1px 1px rgba(0,0,0,0.15),
-            /* The second layer */
-        0 10px 0 -5px #eee,
-            /* The second layer shadow */
-        0 10px 1px -4px rgba(0,0,0,0.15),
-            /* The third layer */
-        0 20px 0 -10px #eee,
-            /* The third layer shadow */
-        0 20px 1px -9px rgba(0,0,0,0.15);
-    padding: 30px;
-} 
+  background-color: white;
+  margin: auto;
+  width: 50%;
+  box-shadow:
+    /* The top layer shadow */ 0 1px 1px rgba(0, 0, 0, 0.15),
+    /* The second layer */ 0 10px 0 -5px #eee,
+    /* The second layer shadow */ 0 10px 1px -4px rgba(0, 0, 0, 0.15),
+    /* The third layer */ 0 20px 0 -10px #eee,
+    /* The third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+}
 
 .line-through {
-    font-style: italic;
-    color: #cdcdcd;
-    text-decoration: line-through;
+  font-style: italic;
+  color: #cdcdcd;
+  text-decoration: line-through;
 }
 
 svg {
-    /* fill: red; */
-    cursor: pointer;
-    align-items: center; 
-    margin-left: 5px;
-    margin-top: 2px;
-    /* border: 1px solid #dddddd; */
+  /* fill: red; */
+  cursor: pointer;
+  align-items: center;
+  margin-left: 5px;
+  margin-top: 2px;
+  /* border: 1px solid #dddddd; */
 }
 
 svg:hover {
-    fill: red;
+  fill: red;
 }
