@@ -8,7 +8,7 @@ This is one of my first projects on React.js. Application allows you to add, edi
 
 `git clone https://github.com/IselDrew/React-ToDo.git`
 
-#### Install depencies:
+#### Install dependencies:
 
 `npm install`
 
