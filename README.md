@@ -1,4 +1,4 @@
-# ReactToDo
+# React ToDo Application
 
 This is one of my first projects on React.js. Application allows you to add, edit and remove tasks. 
 
