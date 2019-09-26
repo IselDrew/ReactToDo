@@ -23,3 +23,5 @@ Install [node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/).
 ## Application preview
 
 ![ToDo Demo](demo/demo.gif)
+
+[Live demo](https://iseldrew.github.io/React-ToDo/)
