@@ -2,6 +2,10 @@
 
 This is one of my first projects on React.js. Application allows you to add, edit and remove tasks. 
 
+## Prerequisites
+
+Install [node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/).
+
 ## Getting Started
 
 #### Clone repository:
